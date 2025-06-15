@@ -56,6 +56,27 @@
         transform: translateY(-120vh) translateX(20px);
       }
     }
+
+    .heartbeat {
+        animation: heartbeat 1.5s infinite;
+        transform-origin: center;
+      }
+
+      @keyframes heartbeat {
+        0%, 100% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        75% {
+          transform: scale(1.1);
+        }
+      }
+
   </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4 relative">
@@ -103,7 +124,11 @@
 
     <div class="text-xl font-bold text-[#741e3a]">03 | 08 | 2025</div>
     
-    <div id="countdown" class="text-sm text-gray-600 font-mono"></div>
+    <!-- <div id="countdown" class="text-sm text-gray-600 font-mono heartbeat"></div> -->
+    <div class="circle-wrapper">
+      <div class="circle-border"></div>
+      <div id="countdown" class="text-sm text-gray-600 font-mono heartbeat relative z-10"></div>
+    </div>
 
     <div class="text-md italic text-gray-700">In shaa Allah</div>
   </div>
