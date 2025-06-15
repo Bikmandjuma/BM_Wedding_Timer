@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bikman & Mariam Wedding</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #f8f5f1;
+    }
+    .envelope {
+      background-color: #741e3a;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+  <div class="bg-white rounded-lg shadow-xl w-full max-w-md text-center p-6 space-y-4">
+    
+    <p class="text-sm text-gray-600">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+    <p class="text-white font-semibold text-lg envelope py-2 rounded">B & M <br><span class="text-base">Are getting married</span></p>
+    
+    <div class="border-2 border-[#741e3a] p-6 rounded-lg">
+      <p class="font-serif text-xl font-bold">SAVE</p>
+      <p class="font-serif text-lg">THE</p>
+      <p class="font-serif text-xl font-bold">DATE</p>
+    </div>
+    
+    <div class="text-lg font-semibold text-gray-700">Bikman & Mariam</div>
+
+    <div class="text-xl font-bold text-[#741e3a]">03 | 08 | 2025</div>
+    
+    <div id="countdown" class="text-sm text-gray-600 font-mono"></div>
+
+    <div class="text-md italic text-gray-700">In shaa Allah</div>
+  </div>
+
+  <script>
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const eventDate = new Date("2025-08-03T12:00:00+02:00"); // Kigali time (UTC+2)
+      const now = new Date();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        countdownEl.textContent = "It's time!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.textContent = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
