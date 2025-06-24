@@ -4,18 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BM Countdown | Save The Date</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com" defer></script>
+
+  <!-- Meta for SEO & Sharing -->
+  <meta name="description" content="Join us in celebrating Bikman & Mariam on August 3, 2025 – In shaa Allah.">
+  <meta property="og:title" content="B & M Wedding Countdown">
+  <meta property="og:description" content="Join us in celebrating Bikman & Mariam on August 3, 2025 – In shaa Allah.">
+  <meta property="og:image" content="your-thumbnail.jpg"> <!-- Replace with your image URL -->
+  <meta property="og:type" content="website">
+
   <style>
     body {
       background-color: #f8f5f1;
       overflow-x: hidden;
+      font-family: "Georgia", "Times New Roman", serif;
     }
 
     .envelope {
       background-color: #741e3a;
     }
 
-    /* Falling Flowers */
     .flower {
       position: fixed;
       top: -50px;
@@ -37,7 +47,6 @@
       }
     }
 
-    /* Floating Balloons */
     .balloon {
       position: fixed;
       bottom: -100px;
@@ -58,25 +67,24 @@
     }
 
     .heartbeat {
-        animation: heartbeat 1.5s infinite;
-        transform-origin: center;
-      }
+      animation: heartbeat 1.5s infinite;
+      transform-origin: center;
+    }
 
-      @keyframes heartbeat {
-        0%, 100% {
-          transform: scale(1);
-        }
-        25% {
-          transform: scale(1.1);
-        }
-        50% {
-          transform: scale(1.2);
-        }
-        75% {
-          transform: scale(1.1);
-        }
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
       }
-
+      25% {
+        transform: scale(1.1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      75% {
+        transform: scale(1.1);
+      }
+    }
   </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4 relative">
@@ -85,7 +93,8 @@
   <script>
     for (let i = 0; i < 15; i++) {
       const flower = document.createElement("img");
-      flower.src = "https://cdn-icons-png.flaticon.com/512/415/415733.png"; // flower icon
+      flower.src = "https://cdn-icons-png.flaticon.com/512/415/415733.png";
+      flower.alt = "Falling flower";
       flower.className = "flower";
       flower.style.left = Math.random() * 100 + "vw";
       flower.style.animationDuration = 5 + Math.random() * 5 + "s";
@@ -97,7 +106,8 @@
   <script>
     for (let i = 0; i < 10; i++) {
       const balloon = document.createElement("img");
-      balloon.src = "https://cdn-icons-png.flaticon.com/512/1077/1077012.png"; // balloon icon
+      balloon.src = "https://cdn-icons-png.flaticon.com/512/1077/1077012.png";
+      balloon.alt = "Floating balloon";
       balloon.className = "balloon";
       balloon.style.left = Math.random() * 100 + "vw";
       balloon.style.animationDuration = 6 + Math.random() * 6 + "s";
@@ -124,7 +134,6 @@
 
     <div class="text-xl font-bold text-[#741e3a]">03 | 08 | 2025</div>
     
-    <!-- <div id="countdown" class="text-sm text-gray-600 font-mono heartbeat"></div> -->
     <div class="circle-wrapper">
       <div class="circle-border"></div>
       <div id="countdown" class="text-sm text-gray-600 font-mono heartbeat relative z-10"></div>
@@ -133,7 +142,7 @@
     <div class="text-md italic text-gray-700">In shaa Allah</div>
   </div>
 
-  <!-- Countdown Script -->
+  <!-- Countdown Timer -->
   <script>
     const countdownEl = document.getElementById("countdown");
 
