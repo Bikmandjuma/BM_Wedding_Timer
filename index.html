@@ -7,23 +7,42 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      background-color: #f8f5f1;
+      background-image: url('https://i.pinimg.com/736x/cc/97/29/cc97291fc56499a9620a763aabc5deb4.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      font-family: sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
       overflow-x: hidden;
+    }
+
+    /* Background overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 0;
     }
 
     .envelope {
       background-color: #741e3a;
     }
 
-    /* Falling Flowers */
     .flower {
       position: fixed;
       top: -50px;
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       pointer-events: none;
       animation: fall linear infinite;
-      z-index: 0;
+      z-index: 1;
     }
 
     @keyframes fall {
@@ -37,76 +56,66 @@
       }
     }
 
-    /* Floating Balloons */
-    .balloon {
-      position: fixed;
-      bottom: -100px;
-      width: 40px;
-      height: 40px;
-      animation: floatUp linear infinite;
-      opacity: 0.7;
-      z-index: 0;
-    }
-
-    @keyframes floatUp {
-      0% {
-        transform: translateY(100vh) translateX(0);
-      }
-      100% {
-        transform: translateY(-120vh) translateX(20px);
-      }
-    }
-
     .heartbeat {
-        animation: heartbeat 1.5s infinite;
-        transform-origin: center;
-      }
+      animation: heartbeat 1.5s infinite;
+      transform-origin: center;
+    }
 
-      @keyframes heartbeat {
-        0%, 100% {
-          transform: scale(1);
-        }
-        25% {
-          transform: scale(1.1);
-        }
-        50% {
-          transform: scale(1.2);
-        }
-        75% {
-          transform: scale(1.1);
-        }
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
       }
+      25% {
+        transform: scale(1.1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      75% {
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes spin-slow-reverse {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
+    .animate-spin-slow {
+      animation: spin-slow 10s linear infinite;
+    }
+
+    .animate-spin-slow-reverse {
+      animation: spin-slow-reverse 10s linear infinite;
+    }
 
   </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-4 relative">
+<body class="flex items-center justify-center min-h-screen p-4 relative z-10">
 
-  <!-- Falling Flowers -->
   <script>
-    for (let i = 0; i < 15; i++) {
-      const flower = document.createElement("img");
-      flower.src = "https://cdn-icons-png.flaticon.com/512/415/415733.png"; // flower icon
-      flower.className = "flower";
-      flower.style.left = Math.random() * 100 + "vw";
-      flower.style.animationDuration = 5 + Math.random() * 5 + "s";
-      document.body.appendChild(flower);
+    const items = [
+      "https://cdn-icons-png.flaticon.com/512/415/415733.png",
+      "images/ring_one.png",
+      "images/ring_two.png",
+    ];
+
+    for (let i = 0; i < 25; i++) {
+      const el = document.createElement("img");
+      el.src = items[Math.floor(Math.random() * items.length)];
+      el.className = "flower";
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.animationDuration = 5 + Math.random() * 5 + "s";
+      document.body.appendChild(el);
     }
   </script>
 
-  <!-- Floating Balloons -->
-  <script>
-    for (let i = 0; i < 10; i++) {
-      const balloon = document.createElement("img");
-      balloon.src = "https://cdn-icons-png.flaticon.com/512/1077/1077012.png"; // balloon icon
-      balloon.className = "balloon";
-      balloon.style.left = Math.random() * 100 + "vw";
-      balloon.style.animationDuration = 6 + Math.random() * 6 + "s";
-      document.body.appendChild(balloon);
-    }
-  </script>
-
-  <!-- Invitation Card -->
-  <div class="bg-white rounded-lg shadow-xl w-full max-w-md text-center p-6 space-y-4 z-10 relative">
+  <div class="bg-white bg-opacity-90 rounded-lg shadow-2xl w-full max-w-md text-center p-6 space-y-4 z-10 relative backdrop-blur-md">
     
     <p class="text-sm text-gray-600">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
     
@@ -114,17 +123,28 @@
       B & M <br><span class="text-base">Are getting married</span>
     </p>
     
-    <div class="border-2 border-[#741e3a] p-6 rounded-lg">
-      <p class="font-serif text-xl font-bold">SAVE</p>
-      <p class="font-serif text-lg">THE</p>
-      <p class="font-serif text-xl font-bold">DATE</p>
+    <div class="relative border-2 border-[#741e3a] p-6 rounded-lg bg-white bg-opacity-80 flex items-center justify-center">
+  
+      <!-- Left Ring -->
+      <img src="images/ring_one.png" alt="Ring One" class="w-20 h-20 absolute left-4 animate-spin-slow-reverse" />
+      
+      <!-- Center Text -->
+      <div class="text-center">
+        <p class="font-serif text-xl font-bold">SAVE</p>
+        <p class="font-serif text-lg">THE</p>
+        <p class="font-serif text-xl font-bold">DATE</p>
+      </div>
+
+      <!-- Right Ring -->
+      <img src="images/ring_two.png" alt="Ring Two" class="w-20 h-20 absolute right-4 animate-spin-slow" />
+
     </div>
+
     
     <div class="text-lg font-semibold text-gray-700">Bikman & Mariam</div>
 
     <div class="text-xl font-bold text-[#741e3a]">03 | 08 | 2025</div>
     
-    <!-- <div id="countdown" class="text-sm text-gray-600 font-mono heartbeat"></div> -->
     <div class="circle-wrapper">
       <div class="circle-border"></div>
       <div id="countdown" class="text-sm text-gray-600 font-mono heartbeat relative z-10"></div>
@@ -138,7 +158,7 @@
     const countdownEl = document.getElementById("countdown");
 
     function updateCountdown() {
-      const eventDate = new Date("2025-08-03T12:00:00+02:00"); // Kigali time
+      const eventDate = new Date("2025-08-03T12:00:00+02:00");
       const now = new Date();
       const diff = eventDate - now;
 

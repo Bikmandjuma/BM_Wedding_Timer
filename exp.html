@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BM Countdown | Save The Date</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #f8f5f1;
+      overflow-x: hidden;
+    }
+
+    .envelope {
+      background-color: #741e3a;
+    }
+
+    /* Falling Flowers */
+    .flower {
+      position: fixed;
+      top: -50px;
+      width: 30px;
+      height: 30px;
+      pointer-events: none;
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Floating Balloons */
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      width: 40px;
+      height: 40px;
+      animation: floatUp linear infinite;
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) translateX(0);
+      }
+      100% {
+        transform: translateY(-120vh) translateX(20px);
+      }
+    }
+
+    .heartbeat {
+        animation: heartbeat 1.5s infinite;
+        transform-origin: center;
+      }
+
+      @keyframes heartbeat {
+        0%, 100% {
+          transform: scale(1);
+        }
+        25% {
+          transform: scale(1.1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        75% {
+          transform: scale(1.1);
+        }
+      }
+
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 relative">
+
+  <!-- Falling Flowers -->
+  <script>
+    for (let i = 0; i < 15; i++) {
+      const flower = document.createElement("img");
+      flower.src = "https://cdn-icons-png.flaticon.com/512/415/415733.png"; // flower icon
+      flower.className = "flower";
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration = 5 + Math.random() * 5 + "s";
+      document.body.appendChild(flower);
+    }
+  </script>
+
+  <!-- Floating Balloons -->
+  <script>
+    for (let i = 0; i < 10; i++) {
+      const balloon = document.createElement("img");
+      balloon.src = "https://cdn-icons-png.flaticon.com/512/1077/1077012.png"; // balloon icon
+      balloon.className = "balloon";
+      balloon.style.left = Math.random() * 100 + "vw";
+      balloon.style.animationDuration = 6 + Math.random() * 6 + "s";
+      document.body.appendChild(balloon);
+    }
+  </script>
+
+  <!-- Invitation Card -->
+  <div class="bg-white rounded-lg shadow-xl w-full max-w-md text-center p-6 space-y-4 z-10 relative">
+    
+    <p class="text-sm text-gray-600">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+    
+    <p class="text-white font-semibold text-lg envelope py-2 rounded">
+      B & M <br><span class="text-base">Are getting married</span>
+    </p>
+    
+    <div class="border-2 border-[#741e3a] p-6 rounded-lg">
+      <p class="font-serif text-xl font-bold">SAVE</p>
+      <p class="font-serif text-lg">THE</p>
+      <p class="font-serif text-xl font-bold">DATE</p>
+    </div>
+    
+    <div class="text-lg font-semibold text-gray-700">Bikman & Mariam</div>
+
+    <div class="text-xl font-bold text-[#741e3a]">03 | 08 | 2025</div>
+    
+    <!-- <div id="countdown" class="text-sm text-gray-600 font-mono heartbeat"></div> -->
+    <div class="circle-wrapper">
+      <div class="circle-border"></div>
+      <div id="countdown" class="text-sm text-gray-600 font-mono heartbeat relative z-10"></div>
+    </div>
+
+    <div class="text-md italic text-gray-700">In shaa Allah</div>
+  </div>
+
+  <!-- Countdown Script -->
+  <script>
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const eventDate = new Date("2025-08-03T12:00:00+02:00"); // Kigali time
+      const now = new Date();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        countdownEl.textContent = "It's time!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.textContent = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>
