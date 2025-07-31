@@ -7,11 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-/*      background-image: url('https://i.pinimg.com/736x/cc/97/29/cc97291fc56499a9620a763aabc5deb4.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;*/
-/*      background-color: white;*/
+
       background-color: #f8f5f1;
       overflow-x: hidden;
       position: relative;
@@ -168,7 +164,9 @@
     const countdownEl = document.getElementById("countdown");
 
     function updateCountdown() {
-      const eventDate = new Date("2025-08-03T12:00:00+02:00");
+      // const eventDate = new Date("2025-08-03T12:00:00+02:00");
+      const eventDate = new Date("2025-08-03T00:00:00+02:00");
+
       const now = new Date();
       const diff = eventDate - now;
 
