@@ -164,14 +164,15 @@
     const countdownEl = document.getElementById("countdown");
 
     function updateCountdown() {
-      // const eventDate = new Date("2025-08-03T12:00:00+02:00");
-      const eventDate = new Date("2025-08-03T00:00:00+02:00");
+      const eventDate = new Date("2025-08-03T06:00:00+02:00");
 
       const now = new Date();
       const diff = eventDate - now;
 
       if (diff <= 0) {
-        countdownEl.textContent = "It's time!";
+        // countdownEl.textContent = "It's time , We're in show now , 😀😀😀!";
+        countdownEl.textContent = "It’s time! The waits is over — B & M’s beautiful day has arrived 💍💖 Let the love, joy, and memories begin! 🎉";
+
         return;
       }
 
