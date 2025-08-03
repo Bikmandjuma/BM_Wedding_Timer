@@ -7,7 +7,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-
       background-color: #f8f5f1;
       overflow-x: hidden;
       position: relative;
@@ -15,10 +14,8 @@
       min-height: 100vh;
       margin: 0;
       padding: 0;
-/*      overflow-x: hidden;*/
     }
 
-    /* Background overlay for readability */
     body::before {
       content: "";
       position: fixed;
@@ -34,9 +31,9 @@
       background-color: #741e3a;
     }
 
-    #countdown{
+    #countdown {
       font-weight: bold;
-      font-size: 18px;
+      font-size: 12px;
     }
 
     .flower {
@@ -97,7 +94,6 @@
     .animate-spin-slow-reverse {
       animation: spin-slow-reverse 10s linear infinite;
     }
-
   </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4 relative z-10">
@@ -131,22 +127,18 @@
     
     <div class="relative border-2 border-[#741e3a] p-6 rounded-lg bg-white bg-opacity-80 flex items-center justify-center">
   
-      <!-- Left Ring -->
       <img src="images/ring_one.png" alt="Ring One" class="w-20 h-20 absolute left-4 animate-spin-slow-reverse" />
       
-      <!-- Center Text -->
       <div class="text-center">
         <p class="font-serif text-xl font-bold">SAVE</p>
         <p class="font-serif text-lg">THE</p>
         <p class="font-serif text-xl font-bold">DATE</p>
       </div>
 
-      <!-- Right Ring -->
       <img src="images/ring_two.png" alt="Ring Two" class="w-20 h-20 absolute right-4 animate-spin-slow" />
 
     </div>
 
-    
     <div class="text-lg font-semibold text-gray-700">Bikman & Mariam</div>
 
     <div class="text-xl font-bold text-[#741e3a]">03 | 08 | 2025</div>
@@ -156,23 +148,19 @@
       <div id="countdown" class="text-sm text-gray-600 font-mono heartbeat relative z-10"></div>
     </div>
 
-    <div class="text-md italic text-gray-700">In shaa Allah</div>
+    <!-- <div class="text-md italic text-gray-700">In shaa Allah</div> -->
   </div>
 
-  <!-- Countdown Script -->
   <script>
     const countdownEl = document.getElementById("countdown");
 
     function updateCountdown() {
       const eventDate = new Date("2025-08-03T05:00:00+02:00");
-
       const now = new Date();
       const diff = eventDate - now;
 
       if (diff <= 0) {
-        // countdownEl.textContent = "It's time , We're in show now , 😀😀😀!";
-        countdownEl.textContent = "It’s time! The waits is over — B & M’s beautiful day has arrived 💍💖 Let the love, joy, and memories begin! 🎉";
-
+        countdownEl.textContent = "✨ Today is the day! 💍 B & M’s moment has arrived — full of love, joy, and barakah! Alhamdulillah! 🕊️💖🎉";
         return;
       }
 
